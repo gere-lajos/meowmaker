@@ -7,22 +7,37 @@ use PHPUnit\Framework\TestCase;
 
 class MeowTest extends TestCase
 {
+    private Meow $meow;
+
+    public function setUp(): void
+    {
+        $this->meow = new Meow();
+    }
+
     public function testItCanBeInstantiated(): void
     {
-        $meow = new Meow();
-        $this->assertInstanceOf(Meow::class, $meow);
+        $this->assertInstanceOf(Meow::class, $this->meow);
     }
 
     public function testItCanGenerateAName(): void
     {
-        $meow = new Meow();
-        $this->assertIsString($meow->name());
+        $this->assertIsString($this->meow->name());
     }
 
     public function testItCanGenerateMoreNames(): void
     {
-        $meow = new Meow();
-        $this->assertIsArray($meow->names(10));
-        $this->assertCount(10, $meow->names(10));
+        $this->assertIsArray($this->meow->names(10));
+        $this->assertCount(10, $this->meow->names(10));
+    }
+
+    public function testItCanGenerateWord(): void
+    {
+        $this->assertIsString($this->meow->word());
+    }
+
+    public function testItCanGenerateMoreWords(): void
+    {
+        $this->assertIsArray($this->meow->words(10));
+        $this->assertCount(10, $this->meow->words(10));
     }
 }
