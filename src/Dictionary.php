@@ -33,6 +33,11 @@ class Dictionary
 
     private function loadFile(string $name): void
     {
-        $this->$name = fgetcsv(fopen(self::NAMES_FILE, 'r'));
+        $file = match($name) {
+            'names' => self::NAMES_FILE,
+            'words' => self::WORDS_FILE,
+        };
+
+        $this->$name = fgetcsv(fopen($file, 'r'));
     }
 }
