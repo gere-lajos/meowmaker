@@ -40,4 +40,26 @@ class MeowTest extends TestCase
         $this->assertIsArray($this->meow->words(10));
         $this->assertCount(10, $this->meow->words(10));
     }
+
+    public function testItCanGenerateSentence(): void
+    {
+        $this->assertIsString($this->meow->sentence());
+    }
+
+    public function testItCanGenerateMoreSentences(): void
+    {
+        $this->assertIsArray($this->meow->sentences(10));
+        $this->assertCount(10, $this->meow->sentences(10));
+    }
+
+    public function testItCanGenerateParagraph(): void
+    {
+        $this->assertIsString($this->meow->paragraph());
+    }
+
+    public function testItCanGenerateMoreParagraphs(): void
+    {
+        $this->assertIsArray($this->meow->paragraphs(10));
+        $this->assertCount(10, $this->meow->paragraphs(10));
+    }
 }

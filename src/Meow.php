@@ -41,6 +41,34 @@ class Meow
         return $words;
     }
 
+    public function sentence(): string
+    {
+        return ucfirst(implode(' ', $this->words(mt_rand(3, 15)))) . '.';
+    }
+
+    public function sentences(int $count = 1): array
+    {
+        $sentences = [];
+        for ($i = 0; $i < $count; $i++) {
+            $sentences[] = $this->sentence();
+        }
+        return $sentences;
+    }
+
+    public function paragraph(): string
+    {
+        return implode(' ', $this->sentences(mt_rand(3, 7)));
+    }
+
+    public function paragraphs(int $count = 1): array
+    {
+        $paragraphs = [];
+        for ($i = 0; $i < $count; $i++) {
+            $paragraphs[] = $this->paragraph();
+        }
+        return $paragraphs;
+    }
+
     private function pickRandom(array $options): string
     {
         return $options[array_rand($options)];
