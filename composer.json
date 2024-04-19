@@ -1,0 +1,19 @@
+{
+  "name": "gerelajos/meowmaker",
+  "description": "A small package to generate cat based fake data",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Gerelajos\\Meowmaker\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Gere Lajos",
+      "email": "streetnoizenova@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^11.1"
+  }
+}
