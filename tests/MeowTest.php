@@ -46,6 +46,13 @@ class MeowTest extends TestCase
         $this->assertIsString($this->meow->sentence());
     }
 
+    public function testSentenceHasCorrectFormat(): void
+    {
+        $sentence = $this->meow->sentence();
+        $this->assertStringStartsWith(ucfirst($sentence), $sentence);
+        $this->assertStringEndsWith('.', $sentence);
+    }
+
     public function testItCanGenerateMoreSentences(): void
     {
         $this->assertIsArray($this->meow->sentences(10));
