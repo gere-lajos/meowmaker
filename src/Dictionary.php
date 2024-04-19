@@ -6,8 +6,6 @@ namespace GereLajos\MeowMaker;
 
 class Dictionary
 {
-    private const string NAMES_FILE = __DIR__ . '/dictionary/names.csv';
-    private const string WORDS_FILE = __DIR__ . '/dictionary/words.csv';
 
     private $names = [];
     private $words = [];
@@ -34,8 +32,8 @@ class Dictionary
     private function loadFile(string $name): void
     {
         $file = match($name) {
-            'names' => self::NAMES_FILE,
-            'words' => self::WORDS_FILE,
+            'names' => Config::NAMES_FILE,
+            'words' => Config::WORDS_FILE,
         };
 
         $this->$name = fgetcsv(fopen($file, 'r'));

@@ -41,9 +41,9 @@ class Meow
         return $words;
     }
 
-    public function sentence(): string
+    public function sentence(int $minWords = Config::MIN_WORDS, int $maxWords = Config::MAX_WORDS): string
     {
-        return ucfirst(implode(' ', $this->words(mt_rand(3, 15)))) . '.';
+        return ucfirst(implode(' ', $this->words(mt_rand($minWords, $maxWords)))) . '.';
     }
 
     public function sentences(int $count = 1): array
@@ -55,9 +55,9 @@ class Meow
         return $sentences;
     }
 
-    public function paragraph(): string
+    public function paragraph(int $minSentences = Config::MIN_SENTENCES, int $maxSentences = Config::MAX_SENTENCES): string
     {
-        return implode(' ', $this->sentences(mt_rand(3, 7)));
+        return implode(' ', $this->sentences(mt_rand($minSentences, $maxSentences)));
     }
 
     public function paragraphs(int $count = 1): array
