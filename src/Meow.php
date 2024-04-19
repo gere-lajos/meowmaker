@@ -6,8 +6,19 @@ namespace GereLajos\MeowMaker;
 
 class Meow
 {
-    public function __construct()
+    public function name(): string
     {
-        echo "Meow";
+        $names = ['Abigél','Lujza'];
+
+        return $names[array_rand($names)];
+    }
+
+    public function names(int $count = 1): array
+    {
+        $names = [];
+        for ($i = 0; $i < $count; $i++) {
+            $names[] = $this->name();
+        }
+        return $names;
     }
 }
