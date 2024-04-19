@@ -26,8 +26,8 @@ class MeowTest extends TestCase
 
     public function testItCanGenerateMoreNames(): void
     {
-        $this->assertIsArray($this->meow->names(10));
-        $this->assertCount(10, $this->meow->names(10));
+        $this->assertIsArray($this->meow->name(10));
+        $this->assertCount(10, $this->meow->name(10));
     }
 
     public function testItCanGenerateWord(): void
@@ -37,8 +37,8 @@ class MeowTest extends TestCase
 
     public function testItCanGenerateMoreWords(): void
     {
-        $this->assertIsArray($this->meow->words(10));
-        $this->assertCount(10, $this->meow->words(10));
+        $this->assertIsArray($this->meow->word(10));
+        $this->assertCount(10, $this->meow->word(10));
     }
 
     public function testItCanGenerateSentence(): void
@@ -55,8 +55,8 @@ class MeowTest extends TestCase
 
     public function testItCanGenerateMoreSentences(): void
     {
-        $this->assertIsArray($this->meow->sentences(10));
-        $this->assertCount(10, $this->meow->sentences(10));
+        $this->assertIsArray($this->meow->sentence(10));
+        $this->assertCount(10, $this->meow->sentence(10));
     }
 
     public function testItCanGenerateParagraph(): void
@@ -66,7 +66,7 @@ class MeowTest extends TestCase
 
     public function testItCanGenerateMoreParagraphs(): void
     {
-        $this->assertIsArray($this->meow->paragraphs(10));
-        $this->assertCount(10, $this->meow->paragraphs(10));
+        $this->assertIsArray($this->meow->paragraph(10));
+        $this->assertCount(10, $this->meow->paragraph(10));
     }
 }

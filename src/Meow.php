@@ -13,64 +13,53 @@ class Meow
         $this->dictionary = new Dictionary();
     }
 
-    public function name(): string
+    public function name(int $count = 1): string|array
     {
-        return $this->pickRandom($this->dictionary->names());
-    }
-
-    public function names(int $count = 1): array
-    {
-        $names = [];
-        for ($i = 0; $i < $count; $i++) {
-            $names[] = $this->name();
+        if($count === 1) {
+            return $this->pickRandom($this->dictionary->names());
         }
-        return $names;
+
+        return $this->pickRandomToArray(fn () => $this->name(), $count);
     }
 
-    public function word(): string
+    public function word(int $count = 1): string|array
     {
-        return $this->pickRandom($this->dictionary->words());
-    }
-
-    public function words(int $count = 1): array
-    {
-        $words = [];
-        for ($i = 0; $i < $count; $i++) {
-            $words[] = $this->word();
+        if($count === 1) {
+            return $this->pickRandom($this->dictionary->words());
         }
-        return $words;
+
+        return $this->pickRandomToArray(fn () => $this->word(), $count);
     }
 
-    public function sentence(int $minWords = Config::MIN_WORDS, int $maxWords = Config::MAX_WORDS): string
+    public function sentence(int $count = 1, int $minWords = Config::MIN_WORDS, int $maxWords = Config::MAX_WORDS): string|array
     {
-        return ucfirst(implode(' ', $this->words(mt_rand($minWords, $maxWords)))) . '.';
-    }
-
-    public function sentences(int $count = 1): array
-    {
-        $sentences = [];
-        for ($i = 0; $i < $count; $i++) {
-            $sentences[] = $this->sentence();
+        if($count === 1) {
+            return ucfirst(implode(' ', $this->words(mt_rand($minWords, $maxWords)))) . '.';
         }
-        return $sentences;
+
+        return $this->pickRandomToArray(fn () => $this->sentence(), $count);
     }
 
-    public function paragraph(int $minSentences = Config::MIN_SENTENCES, int $maxSentences = Config::MAX_SENTENCES): string
+    public function paragraph(int $count = 1, int $minSentences = Config::MIN_SENTENCES, int $maxSentences = Config::MAX_SENTENCES): string|array
     {
-        return implode(' ', $this->sentences(mt_rand($minSentences, $maxSentences)));
-    }
-
-    public function paragraphs(int $count = 1): array
-    {
-        $paragraphs = [];
-        for ($i = 0; $i < $count; $i++) {
-            $paragraphs[] = $this->paragraph();
+        if($count === 1) {
+            return implode(' ', $this->sentence(mt_rand($minSentences, $maxSentences)));
         }
-        return $paragraphs;
+
+        return $this->pickRandomToArray(fn () => $this->paragraph(), $count);
     }
 
     private function pickRandom(array $options): string
     {
         return $options[array_rand($options)];
+    }
+
+    private function pickRandomToArray(callable $callback, int $count): array
+    {
+        $items = [];
+        for ($i = 0; $i < $count; $i++) {
+            $items[] = $callback();
+        }
+        return $items;
     }
 }
