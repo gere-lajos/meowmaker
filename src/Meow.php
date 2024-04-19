@@ -6,11 +6,16 @@ namespace GereLajos\MeowMaker;
 
 class Meow
 {
+    private Dictionary $dictionary;
+
+    public function __construct(
+    ) {
+        $this->dictionary = new Dictionary();
+    }
+
     public function name(): string
     {
-        $names = ['Abigél','Lujza'];
-
-        return $names[array_rand($names)];
+        return $this->pickRandom($this->dictionary->names());
     }
 
     public function names(int $count = 1): array
@@ -20,5 +25,10 @@ class Meow
             $names[] = $this->name();
         }
         return $names;
+    }
+
+    private function pickRandom(array $options): string
+    {
+        return $options[array_rand($options)];
     }
 }
