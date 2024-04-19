@@ -7,20 +7,32 @@ namespace GereLajos\MeowMaker;
 class Dictionary
 {
     private const string NAMES_FILE = __DIR__ . '/dictionary/names.csv';
+    private const string WORDS_FILE = __DIR__ . '/dictionary/words.csv';
 
     private $names = [];
+    private $words = [];
 
     public function names(): array
     {
-        if(!$this->names) {
-            $this->loadNames();
-        }
-
-        return $this->names;
+        return $this->returnOrLoadFile('names');
     }
 
-    private function loadNames(): void
+    public function words(): array
     {
-        $this->names = fgetcsv(fopen(self::NAMES_FILE, 'r'));
+        return $this->returnOrLoadFile('words');
+    }
+
+    private function returnOrLoadFile(string $name): array
+    {
+        if(!$this->$name) {
+            $this->loadFile($name);
+        }
+
+        return $this->$name;
+    }
+
+    private function loadFile(string $name): void
+    {
+        $this->$name = fgetcsv(fopen(self::NAMES_FILE, 'r'));
     }
 }
