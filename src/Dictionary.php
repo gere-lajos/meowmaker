@@ -6,8 +6,7 @@ namespace GereLajos\MeowMaker;
 
 class Dictionary
 {
-    private $names = [];
-    private $words = [];
+    private array $dictionary = [];
 
     public function names(): array
     {
@@ -21,11 +20,11 @@ class Dictionary
 
     private function returnOrLoadFile(string $name): array
     {
-        if(!$this->$name) {
+        if(!in_array($name, array_keys($this->dictionary))) {
             $this->loadFile($name);
         }
 
-        return $this->$name;
+        return $this->dictionary[$name];
     }
 
     private function loadFile(string $name): void
@@ -35,6 +34,6 @@ class Dictionary
             'words' => Config::WORDS_FILE,
         };
 
-        $this->$name = fgetcsv(fopen($file, 'r'));
+        $this->dictionary[$name] = fgetcsv(fopen($file, 'r'));
     }
 }
