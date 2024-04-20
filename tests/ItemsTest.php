@@ -32,4 +32,11 @@ class ItemsTest extends TestCase
 
         $this->assertCount(10, $unique->toArray());
     }
+
+    public function testItemsCanBeConvertedToJson(): void
+    {
+        $items = new Items(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']);
+        $json = $items->toJson();
+        $this->assertJson($json);
+    }
 }

@@ -47,6 +47,11 @@ class Items implements ArrayAccess, Countable, Stringable
         return $this->items;
     }
 
+    public function toJson(): string
+    {
+        return json_encode($this->items);
+    }
+
     public function offsetExists($offset): bool
     {
         return isset($this->items[$offset]);
