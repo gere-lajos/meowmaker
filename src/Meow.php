@@ -4,27 +4,38 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker;
 
+use GereLajos\MeowMaker\Enums\NameType;
 use GereLajos\MeowMaker\Structures\Item;
 use GereLajos\MeowMaker\Structures\Items;
 use GereLajos\MeowMaker\Utils\Randomizer;
 
 class Meow
 {
-    private Dictionary $dictionary;
+    public Dictionary $dictionary;
 
     public function __construct(
     ) {
         $this->dictionary = new Dictionary();
     }
 
-    public function name(): Item
+    public function name(NameType $type = NameType::FULL): Item
     {
-        return Randomizer::pick($this->dictionary->names());
+        return Randomizer::pick($this->dictionary->names($type));
     }
 
     public function names(int $count = 1): Items
     {
         return Randomizer::pickToArray(fn () => $this->name(), $count);
+    }
+
+    public function maleNames(int $count = 1): Items
+    {
+        return Randomizer::pickToArray(fn () => $this->name(NameType::MALE), $count);
+    }
+
+    public function femaleNames(int $count = 1): Items
+    {
+        return Randomizer::pickToArray(fn () => $this->name(NameType::FEMALE), $count);
     }
 
     public function word(): Item

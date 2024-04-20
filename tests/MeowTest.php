@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use GereLajos\MeowMaker\Dictionary;
+use GereLajos\MeowMaker\Enums\NameType;
 use GereLajos\MeowMaker\Meow;
 use GereLajos\MeowMaker\Structures\Item;
 use GereLajos\MeowMaker\Structures\Items;
@@ -24,6 +26,20 @@ class MeowTest extends TestCase
     public function testItCanGenerateAName(): void
     {
         $this->assertInstanceOf(Item::class, $this->meow->name());
+    }
+
+    public function testItCanGenerateAMaleName(): void
+    {
+        $name = $this->meow->name(NameType::MALE);
+        $this->assertInstanceOf(Item::class, $name);
+        $this->assertContains((string) $name, $this->meow->dictionary->names(NameType::MALE));
+    }
+
+    public function testItCanGenerateAFemaleName(): void
+    {
+        $name = $this->meow->name(NameType::FEMALE);
+        $this->assertInstanceOf(Item::class, $name);
+        $this->assertContains((string) $name, $this->meow->dictionary->names(NameType::FEMALE));
     }
 
     public function testItCanGenerateMoreNames(): void
