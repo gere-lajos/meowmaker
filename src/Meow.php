@@ -50,6 +50,34 @@ class Meow
         return Randomizer::pickToArray(fn () => $this->femaleName(), $count);
     }
 
+    public function lastName(): Item
+    {
+        return Randomizer::pick($this->dictionary->misc(MiscType::LASTNAME));
+    }
+
+    public function fullName(NameType $type = NameType::FULL): Item
+    {
+        $firstName = $this->name($type);
+        $lastName = $this->lastName();
+
+        return new Item($firstName.' '.$lastName);
+    }
+
+    public function maleFullName(): Item
+    {
+        return $this->fullName(NameType::MALE);
+    }
+
+    public function femaleFullName(): Item
+    {
+        return $this->fullName(NameType::FEMALE);
+    }
+
+    public function fullNames(int $count = 1): Items
+    {
+        return Randomizer::pickToArray(fn () => $this->fullName(), $count);
+    }
+
     public function email(): Item
     {
         $adjective = Randomizer::pick($this->dictionary->words(WordType::ADJECTIVE));

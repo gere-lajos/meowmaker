@@ -16,6 +16,7 @@ class DictionaryTest extends TestCase
 
         $this->assertIsArray($dictionary->misc(MiscType::DOMAIN));
         $this->assertNotEmpty($dictionary->misc(MiscType::DOMAIN));
+        $this->assertNotEmpty($dictionary->misc(MiscType::LASTNAME));
     }
 
     public function testNames(): void

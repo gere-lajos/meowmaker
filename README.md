@@ -33,6 +33,12 @@ $maleNames = $meow->maleNames(5); // ["Whiskers", "Mittens", "Fluffy", "Tiger", 
 
 $femaleName = $meow->femaleName(); // "Luna"
 $femaleNames = $meow->femaleNames(5); // ["Luna", "Bella", "Lucy", "Kitty", "Daisy"]
+
+$lastName = $meow->lastName(); // "Tabbyfield"
+
+$fullName = $meow->fullName(); // "Toby Tabbyfield"
+$fullMaleName = $meow->fullMaleName(); // "Toby Tabbyfield"
+$fullFemaleName = $meow->fullFemaleName(); // "Luna Furbridge"
 ```
 
 ### Generate miscellaneous items

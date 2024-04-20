@@ -12,6 +12,7 @@ $separator = '####################';
 echo 'A name: ' . $meow->name() . PHP_EOL;
 echo 'A male name: ' . $meow->name(NameType::MALE) . PHP_EOL;
 echo 'A female name: '. $meow->name(NameType::FEMALE) . PHP_EOL;
+echo 'A full name: ' . $meow->fullName(NameType::FULL) . PHP_EOL;
 echo 'More names: ' . implode(', ', $meow->names(5)->toArray()) . PHP_EOL;
 echo $separator . PHP_EOL;
 
