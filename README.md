@@ -74,7 +74,13 @@ $paragraphs = $meow->paragraphs(5); // ["The cat meowed. The cat purred. The cat
 ```
 
 ## Items modifiers
--- TODO --
+Items can be modified various ways. For example, you can 
+```php
+$items->add(Item $item); // Add an item to the collection
+$items->shuffle(); // Shuffle the items in the collection
+$items->unique(); // Get only unique items from the collection
+$items->unique(); // Get only unique items from the collection
+$items->filter(callable $callback); // Filter the items in the collection
 
 ## Credits
 
