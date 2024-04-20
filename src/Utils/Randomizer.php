@@ -4,18 +4,21 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker\Utils;
 
+use GereLajos\MeowMaker\Structures\Item;
+use GereLajos\MeowMaker\Structures\Items;
+
 class Randomizer
 {
-    public static function pick(array $options): string
+    public static function pick(array $options): Item
     {
-        return $options[array_rand($options)];
+        return new Item($options[array_rand($options)]);
     }
 
-    public static function pickToArray(callable $callback, int $count): array
+    public static function pickToArray(callable $callback, int $count): Items
     {
-        $items = [];
+        $items = new Items();
         for ($i = 0; $i < $count; $i++) {
-            $items[] = $callback();
+            $items->add($callback());
         }
 
         return $items;

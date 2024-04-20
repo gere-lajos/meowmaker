@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GereLajos\MeowMaker;
 
 use GereLajos\MeowMaker\Structures\Item;
+use GereLajos\MeowMaker\Structures\Items;
 use GereLajos\MeowMaker\Utils\Randomizer;
 
 class Meow
@@ -18,38 +19,46 @@ class Meow
 
     public function name(): Item
     {
-        return new Item(Randomizer::pick($this->dictionary->names()));
+        return Randomizer::pick($this->dictionary->names());
     }
 
-    public function names(int $count = 1): array
+    public function names(int $count = 1): Items
     {
         return Randomizer::pickToArray(fn () => $this->name(), $count);
     }
 
-    public function word(int $count = 1): string|array
+    public function word(): Item
     {
-        if($count === 1) {
-            return Randomizer::pick($this->dictionary->words());
-        }
+        return Randomizer::pick($this->dictionary->words());
+    }
 
+    public function words(int $count = 1): Items
+    {
         return Randomizer::pickToArray(fn () => $this->word(), $count);
     }
 
-    public function sentence(int $count = 1, int $minWords = Config::MIN_WORDS, int $maxWords = Config::MAX_WORDS): string|array
+    public function sentence(int $minWords = Config::MIN_WORDS, int $maxWords = Config::MAX_WORDS): Item
     {
-        if($count === 1) {
-            return ucfirst(implode(' ', $this->word(mt_rand($minWords, $maxWords)))) . '.';
-        }
+        $words = $this->words(mt_rand($minWords, $maxWords));
+        $sentence = ucfirst(implode(' ', $words->toArray())).'.';
 
+        return new Item($sentence);
+    }
+
+    public function sentences(int $count = 1): Items
+    {
         return Randomizer::pickToArray(fn () => $this->sentence(), $count);
     }
 
-    public function paragraph(int $count = 1, int $minSentences = Config::MIN_SENTENCES, int $maxSentences = Config::MAX_SENTENCES): string|array
+    public function paragraph(int $minSentences = Config::MIN_SENTENCES, int $maxSentences = Config::MAX_SENTENCES): Item
     {
-        if($count === 1) {
-            return implode(' ', $this->sentence(mt_rand($minSentences, $maxSentences)));
-        }
+        $sentences = $this->sentences(mt_rand($minSentences, $maxSentences));
 
+        return new Item(implode(' ', $sentences->toArray()));
+    }
+
+    public function paragraphs(int $count = 1): Items
+    {
         return Randomizer::pickToArray(fn () => $this->paragraph(), $count);
     }
 }
