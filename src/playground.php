@@ -16,9 +16,12 @@ echo 'A full name: ' . $meow->fullName(NameType::FULL) . PHP_EOL;
 echo 'More names: ' . implode(', ', $meow->names(5)->toArray()) . PHP_EOL;
 echo $separator . PHP_EOL;
 
-// Generate an email
+// Generate misc items
 echo 'An email: ' . $meow->email() . PHP_EOL;
 echo 'More emails: ' . implode(', ', $meow->emails(3)->toArray()) . PHP_EOL;
+echo 'A phone number: ' . $meow->phone() . PHP_EOL;
+echo 'A company: ' . $meow->company() . PHP_EOL;
+echo 'A job title: ' . $meow->jobTitle() . PHP_EOL;
 
 // Generate a word
 echo 'A word: ' . $meow->word() . PHP_EOL;

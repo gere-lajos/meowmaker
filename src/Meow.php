@@ -60,7 +60,7 @@ class Meow
         $firstName = $this->name($type);
         $lastName = $this->lastName();
 
-        return new Item($firstName.' '.$lastName);
+        return new Item("$firstName $lastName");
     }
 
     public function maleFullName(): Item
@@ -78,13 +78,33 @@ class Meow
         return Randomizer::pickToArray(fn () => $this->fullName(), $count);
     }
 
+    public function phone(): Item
+    {
+        $phone = '+'.mt_rand(1, 9).mt_rand(100, 999).mt_rand(100, 999).mt_rand(1000, 9999);
+
+        return new Item($phone);
+    }
+
+    public function company(): Item
+    {
+        $company = Randomizer::pick($this->dictionary->misc(MiscType::COMPANY));
+        $company_suffix = Randomizer::pick($this->dictionary->misc(MiscType::COMPANY_SUFFIX));
+
+        return new Item("$company $company_suffix");
+    }
+
+    public function jobTitle(): Item
+    {
+        return Randomizer::pick($this->dictionary->misc(MiscType::JOBTITLE));
+    }
+
     public function email(): Item
     {
         $adjective = Randomizer::pick($this->dictionary->words(WordType::ADJECTIVE));
         $name = $this->name();
         $number = mt_rand(1, 999);
         $domain = Randomizer::pick($this->dictionary->misc(MiscType::DOMAIN));
-        $email = strtolower($adjective.'.'.$name.'.'.$number.'@'.$domain);
+        $email = strtolower("$adjective.$name.$number@$domain");
 
         return new Item($email);
     }

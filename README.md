@@ -45,6 +45,10 @@ $fullFemaleName = $meow->fullFemaleName(); // "Luna Furbridge"
 ```php
 $email = $meow->email(); // "agile.chester.461@acrobaticcats.net"
 $emails = $meow->emails(3); // ["agile.chester.461@acrobaticcats.net, leaping.phoebe.763@dociledome.com, soft.ruby.261@agilealley.io"]
+
+$phone = $meow->phone(); // "+61423832405"
+$company = $meow->company(); // "Velvet Ventures S.E."
+$jobTitle = $meow->jobTitle(); // "Soft Paws Therapist"
 ```
 
 ### Generate words, sentences and paragraphs

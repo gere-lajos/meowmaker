@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker\Tests;
 
+use GereLajos\MeowMaker\Enums\MiscType;
 use GereLajos\MeowMaker\Meow;
 use GereLajos\MeowMaker\Structures\Item;
 use GereLajos\MeowMaker\Structures\Items;
@@ -29,5 +30,19 @@ class MiscTest extends TestCase
     {
         $this->assertInstanceOf(Items::class, $this->meow->emails(10));
         $this->assertCount(10, $this->meow->emails(10));
+    }
+
+    public function testItCanGenerateCompany(): void
+    {
+        $company = $this->meow->company();
+        $this->assertInstanceOf(Item::class, $company);
+        $this->assertIsString((string) $company);
+    }
+
+    public function testItCangenerateJobTitle(): void
+    {
+        $jobTitle = $this->meow->jobTitle();
+        $this->assertInstanceOf(Item::class, $jobTitle);
+        $this->assertContains((string) $jobTitle, $this->meow->dictionary->misc(MiscType::JOBTITLE));
     }
 }
