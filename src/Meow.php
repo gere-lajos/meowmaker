@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker;
 
+use GereLajos\MeowMaker\Structures\Item;
 use GereLajos\MeowMaker\Utils\Randomizer;
 
 class Meow
@@ -15,12 +16,13 @@ class Meow
         $this->dictionary = new Dictionary();
     }
 
-    public function name(int $count = 1): string|array
+    public function name(): Item
     {
-        if($count === 1) {
-            return Randomizer::pick($this->dictionary->names());
-        }
+        return new Item(Randomizer::pick($this->dictionary->names()));
+    }
 
+    public function names(int $count = 1): array
+    {
         return Randomizer::pickToArray(fn () => $this->name(), $count);
     }
 

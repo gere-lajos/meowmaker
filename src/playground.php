@@ -9,7 +9,7 @@ $separator = '####################';
 
 // Generate a name
 echo 'A name: ' . $meow->name() . PHP_EOL;
-echo 'More names: ' . implode(', ', $meow->name(10)) . PHP_EOL;
+echo 'More names: ' . implode(', ', $meow->names(10)) . PHP_EOL;
 echo $separator . PHP_EOL;
 
 // Generate a word

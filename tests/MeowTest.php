@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use GereLajos\MeowMaker\Meow;
+use GereLajos\MeowMaker\Structures\Item;
 use PHPUnit\Framework\TestCase;
 
 class MeowTest extends TestCase
@@ -21,13 +22,13 @@ class MeowTest extends TestCase
 
     public function testItCanGenerateAName(): void
     {
-        $this->assertIsString($this->meow->name());
+        $this->assertInstanceOf(Item::class, $this->meow->name());
     }
 
     public function testItCanGenerateMoreNames(): void
     {
-        $this->assertIsArray($this->meow->name(10));
-        $this->assertCount(10, $this->meow->name(10));
+        $this->assertIsArray($this->meow->names(10));
+        $this->assertCount(10, $this->meow->names(10));
     }
 
     public function testItCanGenerateWord(): void
