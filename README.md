@@ -33,6 +33,7 @@ $names = $meow->names(5); // ["Whiskers", "Mittens", "Fluffy", "Tiger", "Smokey"
 ```php
 $email = $meow->email(); // "agile.chester.461@acrobaticcats.net"
 $emails = $meow->emails(3); // ["agile.chester.461@acrobaticcats.net, leaping.phoebe.763@dociledome.com, soft.ruby.261@agilealley.io"]
+```
 
 ### Generate words, sentences and paragraphs
 ```php
