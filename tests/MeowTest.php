@@ -30,14 +30,14 @@ class MeowTest extends TestCase
 
     public function testItCanGenerateAMaleName(): void
     {
-        $name = $this->meow->name(NameType::MALE);
+        $name = $this->meow->maleName();
         $this->assertInstanceOf(Item::class, $name);
         $this->assertContains((string) $name, $this->meow->dictionary->names(NameType::MALE));
     }
 
     public function testItCanGenerateAFemaleName(): void
     {
-        $name = $this->meow->name(NameType::FEMALE);
+        $name = $this->meow->femaleName();
         $this->assertInstanceOf(Item::class, $name);
         $this->assertContains((string) $name, $this->meow->dictionary->names(NameType::FEMALE));
     }

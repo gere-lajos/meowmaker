@@ -23,6 +23,16 @@ class Meow
         return Randomizer::pick($this->dictionary->names($type));
     }
 
+    public function maleName(): Item
+    {
+        return $this->name(NameType::MALE);
+    }
+
+    public function femaleName(): Item
+    {
+        return $this->name(NameType::FEMALE);
+    }
+
     public function names(int $count = 1): Items
     {
         return Randomizer::pickToArray(fn () => $this->name(), $count);
@@ -30,12 +40,12 @@ class Meow
 
     public function maleNames(int $count = 1): Items
     {
-        return Randomizer::pickToArray(fn () => $this->name(NameType::MALE), $count);
+        return Randomizer::pickToArray(fn () => $this->maleName(), $count);
     }
 
     public function femaleNames(int $count = 1): Items
     {
-        return Randomizer::pickToArray(fn () => $this->name(NameType::FEMALE), $count);
+        return Randomizer::pickToArray(fn () => $this->femaleName(), $count);
     }
 
     public function word(): Item
