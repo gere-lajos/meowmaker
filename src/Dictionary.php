@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker;
 
+use GereLajos\MeowMaker\Enums\AddressType;
 use GereLajos\MeowMaker\Enums\DictionaryType;
 use GereLajos\MeowMaker\Enums\MiscType;
 use GereLajos\MeowMaker\Enums\NameType;
@@ -12,6 +13,11 @@ use GereLajos\MeowMaker\Enums\WordType;
 class Dictionary
 {
     private array $dictionary = [];
+
+    public function address(AddressType $type): array
+    {
+        return $this->returnOrLoadFile(DictionaryType::ADDRESS)[$type->value];
+    }
 
     public function misc(MiscType $type): array
     {
@@ -40,6 +46,7 @@ class Dictionary
     private function loadFile(DictionaryType $type): void
     {
         $file = match($type) {
+            DictionaryType::ADDRESS => Config::ADDRESS_FILE,
             DictionaryType::MISC => Config::MISC_FILE,
             DictionaryType::NAMES => Config::NAMES_FILE,
             DictionaryType::WORDS => Config::WORDS_FILE,

@@ -6,6 +6,7 @@ namespace GereLajos\MeowMaker;
 
 class Config
 {
+    public const string ADDRESS_FILE = __DIR__ . '/Dictionary/address.csv';
     public const string MISC_FILE = __DIR__ . '/Dictionary/misc.csv';
     public const string NAMES_FILE = __DIR__ . '/Dictionary/names.csv';
     public const string WORDS_FILE = __DIR__ . '/Dictionary/words.csv';
