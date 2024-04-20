@@ -2,7 +2,7 @@
 
 MeowMaker is a simple PHP package that generates random cat data. It is useful for testing and seeding databases.
 
-![MeowMaker Logo](assets/logo.webp)
+<img src="assets/logo.webp" alt="MeowMaker Logo" width="200"/>
 
 ## Installation
 
