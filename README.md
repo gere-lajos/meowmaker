@@ -9,7 +9,7 @@ MeowMaker is a simple PHP package that generates random cat data. It is useful f
 You can install the package via composer:
 
 ```bash
-composer require gere-lajos/meowmaker
+composer require gerelajos/meowmaker
 ```
 
 ## Usage
