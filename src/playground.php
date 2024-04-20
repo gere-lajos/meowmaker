@@ -16,6 +16,14 @@ echo 'A full name: ' . $meow->fullName(NameType::FULL) . PHP_EOL;
 echo 'More names: ' . implode(', ', $meow->names(5)->toArray()) . PHP_EOL;
 echo $separator . PHP_EOL;
 
+// Generate address
+echo 'An address: ' . $meow->address() . PHP_EOL;
+echo 'A country: ' . $meow->country() . PHP_EOL;
+echo 'A city: ' . $meow->city() . PHP_EOL;
+echo 'A street: ' . $meow->street() . PHP_EOL;
+echo 'A postcode: ' . $meow->postcode() . PHP_EOL;
+echo 'A building number: ' . $meow->buildingNumber() . PHP_EOL;
+
 // Generate misc items
 echo 'An email: ' . $meow->email() . PHP_EOL;
 echo 'More emails: ' . implode(', ', $meow->emails(3)->toArray()) . PHP_EOL;

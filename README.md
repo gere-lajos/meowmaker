@@ -41,6 +41,16 @@ $fullMaleName = $meow->fullMaleName(); // "Toby Tabbyfield"
 $fullFemaleName = $meow->fullFemaleName(); // "Luna Furbridge"
 ```
 
+### Generate addresses
+```php
+$address = $meow->address(); // " Slinkyside, Clawchester, Tabby Crossroad 228, 4725"
+$country = $meow->country(); // "Purrch Republic"
+$city = $meow->city(); // "Whisperwind"
+$street = $meow->street(); // "Meow Highway"
+$postcode = $meow->postcode(); // "4725"
+$buildingNumber = $meow->buildingNumber(); // "228"
+```
+
 ### Generate miscellaneous items
 ```php
 $email = $meow->email(); // "agile.chester.461@acrobaticcats.net"

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker;
 
+use GereLajos\MeowMaker\Enums\AddressType;
 use GereLajos\MeowMaker\Enums\MiscType;
 use GereLajos\MeowMaker\Enums\NameType;
 use GereLajos\MeowMaker\Enums\WordType;
@@ -112,6 +113,45 @@ class Meow
     public function emails(int $count = 1): Items
     {
         return Randomizer::pickToArray(fn () => $this->email(), $count);
+    }
+
+    public function country(): Item
+    {
+        return Randomizer::pick($this->dictionary->address(AddressType::COUNTRY));
+    }
+
+    public function city(): Item
+    {
+        return Randomizer::pick($this->dictionary->address(AddressType::CITY));
+    }
+
+    public function street(): Item
+    {
+        $street = Randomizer::pick($this->dictionary->address(AddressType::STREET));
+        $street_suffix = Randomizer::pick($this->dictionary->address(AddressType::STREET_SUFFIX));
+
+        return new Item("$street $street_suffix");
+    }
+
+    public function buildingNumber(): Item
+    {
+        return new Item((string) mt_rand(1, 999));
+    }
+
+    public function postcode(): Item
+    {
+        return new Item((string) mt_rand(1000, 9999));
+    }
+
+    public function address(): Item
+    {
+        $country = $this->country();
+        $city = $this->city();
+        $street = $this->street();
+        $buildingNumber = $this->buildingNumber();
+        $postcode = $this->postcode();
+
+        return new Item("$country, $city, $street $buildingNumber, $postcode");
     }
 
     public function word(): Item
