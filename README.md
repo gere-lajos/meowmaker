@@ -81,6 +81,7 @@ $items->shuffle(); // Shuffle the items in the collection
 $items->unique(); // Get only unique items from the collection
 $items->unique(); // Get only unique items from the collection
 $items->filter(callable $callback); // Filter the items in the collection
+```
 
 ## Credits
 
