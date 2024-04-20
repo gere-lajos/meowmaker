@@ -27,6 +27,12 @@ $names = $meow->names(5); // ["Whiskers", "Mittens", "Fluffy", "Tiger", "Smokey"
 ```php
 $name = $meow->name(); // "Whiskers"
 $names = $meow->names(5); // ["Whiskers", "Mittens", "Fluffy", "Tiger", "Smokey"]
+
+$maleName = $meow->maleName(); // "Whiskers"
+$maleNames = $meow->maleNames(5); // ["Whiskers", "Mittens", "Fluffy", "Tiger", "Smokey"]
+
+$femaleName = $meow->femaleName(); // "Luna"
+$femaleNames = $meow->femaleNames(5); // ["Luna", "Bella", "Lucy", "Kitty", "Daisy"]
 ```
 
 ### Generate miscellaneous items
