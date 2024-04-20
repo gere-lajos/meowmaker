@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker;
 
+use GereLajos\MeowMaker\Enums\MiscType;
 use GereLajos\MeowMaker\Enums\NameType;
+use GereLajos\MeowMaker\Enums\WordType;
 use GereLajos\MeowMaker\Structures\Item;
 use GereLajos\MeowMaker\Structures\Items;
 use GereLajos\MeowMaker\Utils\Randomizer;
@@ -46,6 +48,22 @@ class Meow
     public function femaleNames(int $count = 1): Items
     {
         return Randomizer::pickToArray(fn () => $this->femaleName(), $count);
+    }
+
+    public function email(): Item
+    {
+        $adjective = Randomizer::pick($this->dictionary->words(WordType::ADJECTIVE));
+        $name = $this->name();
+        $number = mt_rand(1, 999);
+        $domain = Randomizer::pick($this->dictionary->misc(MiscType::DOMAIN));
+        $email = strtolower($adjective.'.'.$name.'.'.$number.'@'.$domain);
+
+        return new Item($email);
+    }
+
+    public function emails(int $count = 1): Items
+    {
+        return Randomizer::pickToArray(fn () => $this->email(), $count);
     }
 
     public function word(): Item

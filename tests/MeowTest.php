@@ -48,6 +48,20 @@ class MeowTest extends TestCase
         $this->assertCount(10, $this->meow->names(10));
     }
 
+    public function testItCanGenerateEmail(): void
+    {
+        $email = $this->meow->email();
+        $this->assertInstanceOf(Item::class, $email);
+        $this->assertStringContainsString('@', (string) $email);
+        $this->assertMatchesRegularExpression('/^[a-z]+\.[a-z]+\.[0-9]+@[a-z]+\.[a-z]+$/', (string) $email);
+    }
+
+    public function testItCanGenerateMoreEmails(): void
+    {
+        $this->assertInstanceOf(Items::class, $this->meow->emails(10));
+        $this->assertCount(10, $this->meow->emails(10));
+    }
+
     public function testItCanGenerateWord(): void
     {
         $this->assertInstanceOf(Item::class, $this->meow->word());
