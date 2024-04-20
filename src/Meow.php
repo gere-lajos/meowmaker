@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace GereLajos\MeowMaker;
 
+use GereLajos\MeowMaker\Utils\Randomizer;
+
 class Meow
 {
     private Dictionary $dictionary;

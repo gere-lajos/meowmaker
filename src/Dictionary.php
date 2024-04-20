@@ -6,7 +6,6 @@ namespace GereLajos\MeowMaker;
 
 class Dictionary
 {
-
     private $names = [];
     private $words = [];
 

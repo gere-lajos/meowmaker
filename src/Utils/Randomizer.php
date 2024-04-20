@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GereLajos\MeowMaker;
+namespace GereLajos\MeowMaker\Utils;
 
 class Randomizer
 {
