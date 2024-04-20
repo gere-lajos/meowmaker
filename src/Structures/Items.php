@@ -20,6 +20,28 @@ class Items implements ArrayAccess, Countable, Stringable
         $this->items[] = $item;
     }
 
+    public function shuffle(): self
+    {
+        $items = $this->items;
+        shuffle($items);
+
+        return new self($items);
+    }
+
+    public function filter(callable $callback): self
+    {
+        $items = array_filter($this->items, $callback);
+
+        return new self($items);
+    }
+
+    public function unique(): self
+    {
+        $items = array_unique($this->items);
+
+        return new self($items);
+    }
+
     public function toArray(): array
     {
         return $this->items;
